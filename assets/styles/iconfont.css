@@ -1,0 +1,43 @@
+@font-face {
+  font-family: "iconfont";
+  src: url('../fonts/iconfont.eot?t=1533553953'); /* IE9*/
+  src: url('../fonts/iconfont.eot?t=1533553953#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../fonts/iconfont.woff?t=1533553953') format('woff'), /* iOS 4.1- */
+    url('../fonts/iconfont.ttf?t=1533553953') format('truetype'); /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+}
+
+.icon:before {
+  display: inline-block;
+  font-family: "iconfont";
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-lg {
+  font-size: 1.3333333333333333em;
+  line-height: 0.75em;
+  vertical-align: -15%;
+}
+.icon-2x { font-size: 2em; }
+.icon-3x { font-size: 3em; }
+.icon-4x { font-size: 4em; }
+.icon-5x { font-size: 5em; }
+.icon-fw {
+  width: 1.2857142857142858em;
+  text-align: center;
+}
+
+.icon-cake:before { content: "\EA01" }
+.icon-coffee:before { content: "\EA02" }
+.icon-equity:before { content: "\EA03" }
+.icon-gift:before { content: "\EA04" }
+.icon-more:before { content: "\EA05" }
+.icon-point:before { content: "\EA06" }
+.icon-sixangle-border:before { content: "\EA07" }
+.icon-sixangle-fill:before { content: "\EA08" }
+.icon-ticket:before { content: "\EA09" }
+.icon-wallet-o:before { content: "\EA0A" }
+
