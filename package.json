@@ -1,32 +1,35 @@
 {
-  "name": "symbols-for-sketch",
-  "version": "2.1.0",
-  "homepage": "https://github.com/cognitom/symbols-for-sketch",
+  "name": "iconfont-generator",
+  "version": "0.1.0",
+  "homepage": "https://github.com/semdy/iconfont-generator",
   "repository": {
     "type": "git",
-    "url": "git://github.com/cognitom/symbols-for-sketch.git"
+    "url": "git@github.com:semdy/iconfont-generator.git"
   },
-  "description": "Symbol font templates for Sketch.app",
+  "description": "iconfont generator build width gulp-iconfont",
   "scripts": {
-    "start": "gulp watch",
-    "symbols": "gulp symbols",
-    "installtool": "curl -L https://raw.githubusercontent.com/cognitom/gulp-sketch/master/install-sketchtool.sh | sudo sh"
+    "start": "gulp start",
+    "build": "gulp build"
   },
   "private": true,
   "keywords": [
     "symbol font",
     "icon font",
-    "sketch",
     "template"
   ],
-  "author": "Tsutomu Kawamura <tsutomu@librize.com>",
+  "author": "semdy <501859275@qq.com>",
   "license": "MIT",
   "devDependencies": {
     "browser-sync": "^2.18.2",
+    "glob": "^7.1.2",
     "gulp": "^3.9.1",
     "gulp-consolidate": "^0.2.0",
     "gulp-iconfont": "^8.0.1",
     "gulp-rename": "^1.2.2",
-    "lodash": "^4.17.2"
+    "lodash": "^4.17.2",
+    "webfonts-generator": "^0.4.0",
+    "gulp-cssfont64": "^0.0.1",
+    "gulp-svgstore": "^6.1.1",
+    "gulp-svgmin": "^1.2.4"
   }
 }
