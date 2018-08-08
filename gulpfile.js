@@ -70,7 +70,7 @@ gulp.task('build', ['svgstore'], () =>
         .pipe(gulp.dest('dist/'))
 
       this.on('end', () => {
-        setTimeout(buildBase64font.bind(this, options), 100)
+        setTimeout(buildBase64font.bind(this, options), 50)
       })
     })
     .pipe(gulp.dest('dist/fonts/'))
@@ -91,7 +91,7 @@ function pipeFontBase64Data(data) {
     }
 
     if (file.isBuffer()) {
-      const base64 = new Buffer(file.contents).toString('base64');
+      const base64 = file.contents.toString('base64');
       const fontfaceBuffer = fs.readFileSync(`templates/${template}-fontface64.css`);
       const cssBuffer = fs.readFileSync(`templates/${template}.css`);
       const contents = Buffer.concat([fontfaceBuffer, cssBuffer], fontfaceBuffer.length + cssBuffer.length);
