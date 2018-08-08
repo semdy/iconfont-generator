@@ -17,5 +17,5 @@ $ npm start or npm run build
 ```
 
 ## live demo
-- ![icon font](semdy.github.io/iconfont-generator/dist/preview_fontclass.html)
-- ![icon symbol](semdy.github.io/iconfont-generator/dist/preview_symbol.html)
+- [icon font](https://semdy.github.io/iconfont-generator/dist/preview_fontclass.html)
+- [icon symbol](https://semdy.github.io/iconfont-generator/dist/preview_symbol.html)
