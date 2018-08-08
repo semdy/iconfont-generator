@@ -1,4 +1,4 @@
-# iconfont for web and miniprogram
+# genterate iconfont for web and miniprogram
 
 add, edit or remove a svg from `assets/icons` directory, the building will auto start and generate font files.
 
