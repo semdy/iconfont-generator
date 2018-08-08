@@ -70,14 +70,18 @@ gulp.task('build', ['svgstore'], () =>
         .pipe(gulp.dest('dist/'))
 
       this.on('end', () => {
-        gulp.src('dist/fonts/*.woff')
-          .pipe(pipeFontBase64Data(options))
-          .pipe(rename({ basename: `${fontName}-base64` }))
-          .pipe(gulp.dest('dist/styles/'))
+        setTimeout(buildBase64font.bind(this, options), 100)
       })
     })
     .pipe(gulp.dest('dist/fonts/'))
 )
+
+function buildBase64font(options) {
+  gulp.src('dist/fonts/*.woff')
+    .pipe(pipeFontBase64Data(options))
+    .pipe(rename({ basename: `${fontName}-base64` }))
+    .pipe(gulp.dest('dist/styles/'))
+}
 
 function pipeFontBase64Data(data) {
   return through.obj(function(file, enc, callback) {
