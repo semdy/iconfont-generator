@@ -36,10 +36,7 @@ gulp.task('build', ['svgstore'], () =>
     .pipe(iconfont({
       fontName,
       formats: ['ttf', 'eot', 'woff', 'svg'],
-      fixedWidth: true,
-      centerHorizontally: true,
       normalize: true,
-      fontHeight: 200,
       timestamp,
       log: () => {}
     }))
