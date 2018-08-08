@@ -1,11 +1,3 @@
-@font-face {
-  font-family: "<%= fontName %>";
-  src: url('<%= fontPath %><%= fontName %>.eot?t=<%= hash %>'); /* IE9*/
-  src: url('<%= fontPath %><%= fontName %>.eot?t=<%= hash %>#iefix') format('embedded-opentype'), /* IE6-IE8 */
-    url('<%= fontPath %><%= fontName %>.woff?t=<%= hash %>') format('woff'),
-    url('<%= fontPath %><%= fontName %>.ttf?t=<%= hash %>') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
-    url('<%= fontPath %><%= fontName %>.svg?t=<%= hash %>#<%= fontName %>') format('svg'); /* iOS 4.1- */
-}
 
 .<%= className %> {
   font-family: "<%= fontName %>" !important;

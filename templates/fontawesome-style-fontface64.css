@@ -1,0 +1,4 @@
+@font-face {
+  font-family: "<%= fontName %>";
+  src: url(data:application/font-woff;charset=utf-8;base64,<%= base64 %>) format('woff')
+}

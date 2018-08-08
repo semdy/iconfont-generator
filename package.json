@@ -13,23 +13,28 @@
   },
   "private": true,
   "keywords": [
-    "symbol font",
+    "svg symbol",
     "icon font",
-    "template"
+    "font base64",
+    "svg",
+    "gulp"
   ],
   "author": "semdy <501859275@qq.com>",
   "license": "MIT",
-  "devDependencies": {
-    "browser-sync": "^2.18.2",
+  "dependencies": {
     "glob": "^7.1.2",
     "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
     "gulp-consolidate": "^0.2.0",
     "gulp-iconfont": "^8.0.1",
     "gulp-rename": "^1.2.2",
-    "lodash": "^4.17.2",
-    "webfonts-generator": "^0.4.0",
-    "gulp-cssfont64": "^0.0.1",
+    "gulp-svgmin": "^1.2.4",
     "gulp-svgstore": "^6.1.1",
-    "gulp-svgmin": "^1.2.4"
+    "gulp-util": "^3.0.8",
+    "lodash": "^4.17.2",
+    "through2": "^2.0.3"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.18.2"
   }
 }

@@ -2,30 +2,45 @@
   <head>
     <meta charset="utf-8">
     <title><%= fontName %></title>
-    <link href="assets/styles/<%= fontName %>.css" rel="stylesheet">
-    <style>
-      body { font-family: Gill Sans; text-align: center; background: #f7f7f7 }
-      body > h1 { color: #666; margin: 1em 0 }
-      .glyph { padding: 0 }
-      .glyph > li {float:left; list-style: none; margin: .3em .2em; padding:.2em; min-width: 5em; height: 6.5em; background: #fff; border-radius: .5em; position: relative; box-sizing: border-box; }
-      .glyph > li > .icon {font-size: 30px;color: #333; line-height: 1.2;}
-      .glyph > li > i > span { position: absolute; top: 0; left: 0; text-align: center; width: 100%; color: rgba(0,0,0,0); line-height: 1em }
-      .glyph-name { color: #666; font-size: 14px; display: block; }
-      .glyph-classname { color: #666; font-size: 13px; display: block; line-height: 1.5; }
-      .glyph-codepoint { color: #999; font-family: monospace; display: block; }
-    </style>
+    <link rel="stylesheet" href="styles/demo.css">
+    <link rel="stylesheet" href="styles/<%= fontName %>.css">
   </head>
   <body>
+  <div class="main markdown">
     <h1><%= fontName %></h1>
-    <ul class="glyph"><% _.each(glyphs, function(glyph) { %>
+    <ul class="icon_lists clear"><% _.each(glyphs, function(glyph) { %>
       <li>
         <i class="icon <%= className %> <%= classPrefix %><%= glyph.name %>">
-           <span><%= String.fromCodePoint(glyph.codepoint) %></span>
+          <span class="fontcode"><%= String.fromCodePoint(glyph.codepoint) %></span>
         </i>
-        <span class="glyph-name"><%= glyph.name %></span>
-        <span class="glyph-classname">.<%= classPrefix %><%= glyph.name %></span>
-        <span class="glyph-codepoint"><%= glyph.codepoint.toString(16).toUpperCase() %></span>
+        <div class="name"><%= glyph.name %></div>
+        <div class="fontclass">.<%= classPrefix %><%= glyph.name %></div>
+        <div class="glyph-codepoint"><%= glyph.codepoint.toString(16).toUpperCase() %></div>
       </li><% }); %>
     </ul>
+
+    <h2 id="font-class-">font-class引用</h2>
+    <hr>
+
+    <p>font-class是unicode使用方式的一种变种，主要是解决unicode书写不直观，语意不明确的问题。</p>
+    <p>与unicode使用方式相比，具有如下特点：</p>
+    <ul>
+      <li>兼容性良好，支持ie8+，及所有现代浏览器。</li>
+      <li>相比于unicode语意明确，书写更直观。可以很容易分辨这个icon是什么。</li>
+      <li>因为使用class来定义图标，所以当要替换图标时，只需要修改class里面的unicode引用。</li>
+      <li>不过因为本质上还是使用的字体，所以多色图标还是不支持的。</li>
+    </ul>
+    <p>使用步骤如下：</p>
+    <h3 id="-fontclass-">第一步：引入项目下面生成的fontclass代码：</h3>
+
+
+    <pre><code class="lang-js hljs javascript"><span class="hljs-comment">&lt;link rel="stylesheet" type="text/css" href="styles/iconfont.css"&gt;</span></code></pre>
+    <h3 id="-">第二步：挑选相应图标并获取类名，应用于页面：</h3>
+    <pre><code class="lang-css hljs">&lt;<span class="hljs-selector-tag">i</span> <span class="hljs-selector-tag">class</span>="<span class="hljs-selector-tag">iconfont</span> <span class="hljs-selector-tag">icon-xxx</span>"&gt;&lt;/<span class="hljs-selector-tag">i</span>&gt;</code></pre>
+    <blockquote>
+      <p>"iconfont"是你项目下的font-family。可以通过编辑项目查看，默认是"iconfont"。</p>
+    </blockquote>
+
+  </div>
   </body>
 </html>
