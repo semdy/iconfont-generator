@@ -44,7 +44,7 @@
     </ul>
     <p>使用步骤如下：</p>
     <h3 id="-symbol-">第一步：引入项目下面生成的symbol代码：</h3>
-    <pre><code class="lang-js hljs javascript"><span class="hljs-comment">&lt;script src="icons/iconfont.js"&gt;&lt;/script&gt;</span></code></pre>
+    <pre><code class="lang-js hljs javascript"><span class="hljs-comment">&lt;script src="icons/<%= fontName %>.js"&gt;&lt;/script&gt;</span></code></pre>
     <h3 id="-css-">第二步：加入通用css代码（引入一次就行）：</h3>
     <pre><code class="lang-js hljs javascript">&lt;style type=<span class="hljs-string">"text/css"</span>&gt;
 .icon {
@@ -57,7 +57,7 @@
 &lt;<span class="hljs-regexp">/style&gt;</span></code></pre>
     <h3 id="-">第三步：挑选相应图标并获取类名，应用于页面：</h3>
     <pre><code class="lang-js hljs javascript">&lt;svg <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"icon"</span> aria-hidden=<span class="hljs-string">"true"</span>&gt;<span class="xml"><span class="hljs-tag">
-  &lt;<span class="hljs-name">use</span> <span class="hljs-attr">xlink:href</span>=<span class="hljs-string">"#icon-xxx"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">use</span>&gt;</span>
+  &lt;<span class="hljs-name">use</span> <span class="hljs-attr">xlink:href</span>=<span class="hljs-string">"#xxx"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">use</span>&gt;</span>
 </span>&lt;<span class="hljs-regexp">/svg&gt;
   </span></code></pre>
 
