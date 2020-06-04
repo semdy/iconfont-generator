@@ -37,6 +37,7 @@ gulp.task('build', ['svgstore'], () =>
       fontName,
       formats: ['ttf', 'eot', 'woff', 'svg'],
       normalize: true,
+      fontHeight: 10000,
       timestamp,
       log: () => {}
     }))
