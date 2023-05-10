@@ -31,7 +31,26 @@ const calcHash = function(files) {
 	return hash.digest('hex')
 }
 
-gulp.task('build', ['svgstore'], () =>
+gulp.task('svgstore', () =>
+   gulp.src(svgs)
+    .pipe(svgmin(file => {
+      const prefix = path.basename(file.relative, path.extname(file.relative));
+      return {
+        plugins: [{
+          cleanupIDs: {
+            prefix: prefix + '-',
+            minify: true
+          }
+        }]
+      }
+    }))
+    .pipe(svgstore())
+    .pipe(pipeSvgSpriteData())
+    .pipe(rename({ basename: fontName }))
+    .pipe(gulp.dest('dist/icons/'))
+)
+
+gulp.task('build', gulp.series('svgstore', () =>
   gulp.src(svgs)
     .pipe(iconfont({
       fontName,
@@ -75,7 +94,7 @@ gulp.task('build', ['svgstore'], () =>
       })
     })
     .pipe(gulp.dest('dist/fonts/'))
-)
+))
 
 function buildBase64font(options) {
   gulp.src('dist/fonts/*.woff')
@@ -97,7 +116,7 @@ function pipeFontBase64Data(data) {
       const cssBuffer = fs.readFileSync(`templates/${template}.css`);
       const contents = Buffer.concat([fontfaceBuffer, cssBuffer], fontfaceBuffer.length + cssBuffer.length);
       const compiled = _.template(contents.toString())(Object.assign({base64: base64}, data));
-      file.contents = new Buffer(compiled);
+      file.contents = Buffer.from(compiled);
       file.path = gutil.replaceExtension(file.path, '.css');
       return callback(null, file);
     } else {
@@ -117,7 +136,7 @@ function pipeSvgSpriteData() {
     if (file.isBuffer()) {
       const svgSprite = file.contents.toString().replace(/<defs>[\s\S]+<\/defs>/, '');
       const tmpJs = fs.readFileSync(`templates/${template}.js`).toString();
-      file.contents = new Buffer(tmpJs.replace('${svgSprite}', svgSprite));
+      file.contents = Buffer.from(tmpJs.replace('${svgSprite}', svgSprite));
       file.path = gutil.replaceExtension(file.path, '.js');
       return callback(null, file);
     } else {
@@ -127,34 +146,18 @@ function pipeSvgSpriteData() {
   });
 }
 
-gulp.task('svgstore', () =>
-   gulp.src(svgs)
-    .pipe(svgmin(file => {
-      const prefix = path.basename(file.relative, path.extname(file.relative));
-      return {
-        plugins: [{
-          cleanupIDs: {
-            prefix: prefix + '-',
-            minify: true
-          }
-        }]
-      }
-    }))
-    .pipe(svgstore())
-    .pipe(pipeSvgSpriteData())
-    .pipe(rename({ basename: fontName }))
-    .pipe(gulp.dest('dist/icons/'))
-)
-
-gulp.task('start', ['build'], () => {
-  bs.init({
-    files: 'dist/*.html',
-    server: 'dist/',
-    startPath: '/preview_fontclass.html',
-    middleware: cacheControl
+gulp.task(
+  'start',
+  gulp.series('build', () => {
+    bs.init({
+      files: 'dist/*.html',
+      server: 'dist/',
+      startPath: '/preview_fontclass.html',
+      middleware: cacheControl
+    })
+    gulp.watch([svgs, templates], gulp.series('build'))
   })
-  gulp.watch([svgs, templates], ['build'])
-})
+)
 
 function mapGlyphs (glyph) {
   return { name: glyph.name, codepoint: glyph.unicode[0].charCodeAt(0) }
