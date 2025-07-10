@@ -33,10 +33,10 @@ default options:
 
 ### configuration file
 
-make `iconfont-generator.config.cjs` file in project root directory, contents:
+make `iconfont-generator.config.js` file in project root directory, contents:
 
 ```javascript
-module.exports = {
+export default {
   ...someOptions // see above default options
 };
 ```
