@@ -1,6 +1,9 @@
 {
   "name": "iconfont-generator",
-  "version": "0.1.0",
+  "version": "1.2.0",
+  "bin": {
+    "iconfont-generator": "./cli.js"
+  },
   "homepage": "https://github.com/semdy/iconfont-generator",
   "repository": {
     "type": "git",
@@ -22,19 +25,21 @@
   "author": "semdy <501859275@qq.com>",
   "license": "MIT",
   "dependencies": {
-    "glob": "^7.1.2",
-    "gulp": "^3.9.1",
+    "browser-sync": "^2.29.1",
+    "c12": "^3.0.4",
+    "glob": "^11.0.3",
+    "gulp": "^4.0.2",
     "gulp-concat": "^2.6.1",
     "gulp-consolidate": "^0.2.0",
-    "gulp-iconfont": "^8.0.1",
-    "gulp-rename": "^1.2.2",
-    "gulp-svgmin": "^1.2.4",
-    "gulp-svgstore": "^6.1.1",
-    "gulp-util": "^3.0.8",
-    "lodash": "^4.17.2",
-    "through2": "^2.0.3"
+    "gulp-iconfont": "^10.0.3",
+    "gulp-rename": "^2.0.0",
+    "gulp-svgmin": "^4.1.0",
+    "gulp-svgo": "^2.2.1",
+    "gulp-svgstore": "^9.0.0",
+    "gulp-watch": "^5.0.1",
+    "lodash": "^4.17.21",
+    "prettier": "^3.5.3",
+    "through2": "^4.0.2"
   },
-  "devDependencies": {
-    "browser-sync": "^2.18.2"
-  }
+  "devDependencies": {}
 }

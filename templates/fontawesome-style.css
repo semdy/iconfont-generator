@@ -1,28 +1,37 @@
 
 .<%= className %> {
-  font-family: "<%= fontName %>" !important;
-  font-size:16px;
+  font-family: "<%= fontName %>";
+  font-size: 1em;
+  line-height: 1;
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
+  user-select: none;
   text-transform: none;
+  text-rendering: optimizelegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 .<%= classPrefix %>lg {
-  font-size: 1.3333333333333333em;
+  font-size: 1.33333333em;
   line-height: 0.75em;
   vertical-align: -15%;
 }
+
 .<%= classPrefix %>2x { font-size: 2em; }
+
 .<%= classPrefix %>3x { font-size: 3em; }
+
 .<%= classPrefix %>4x { font-size: 4em; }
+
 .<%= classPrefix %>5x { font-size: 5em; }
+
 .<%= classPrefix %>fw {
-  width: 1.2857142857142858em;
+  width: 1.28571429em;
   text-align: center;
 }
 
-<% _.each(glyphs, function(glyph) { %>.<%= classPrefix %><%= glyph.name %>:before { content: "\<%= glyph.codepoint.toString(16).toUpperCase() %>" }
+<% _.each(glyphs, function(glyph) { %>
+.<%= classPrefix %><%= glyph.name %>:before { content: "\<%= glyph.codepoint.toString(16).toUpperCase() %>" }
 <% }); %>

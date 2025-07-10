@@ -1,9 +1,9 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title><%= fontName %></title>
+    <title>iconfont</title>
     <link rel="stylesheet" href="styles/demo.css" />
-    <script src="icons/<%= fontName %>.js"></script>
+    <script src="icons/iconfont.js"></script>
 
     <style>
       .icon {
@@ -22,16 +22,51 @@
   </head>
   <body>
     <div class="main markdown">
-      <h1><%= fontName %> symbol</h1>
+      <h1>iconfont symbol</h1>
       <ul class="icon_lists clear">
-        <% _.each(glyphs, function(glyph) { %>
+        
         <li>
           <svg class="icon" aria-hidden="true">
-            <use xlink:href="#<%= glyph.name %>"></use>
+            <use xlink:href="#cake"></use>
           </svg>
-          <div class="name"><%= glyph.name %></div>
+          <div class="name">cake</div>
         </li>
-        <% }); %>
+        
+        <li>
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#coffee"></use>
+          </svg>
+          <div class="name">coffee</div>
+        </li>
+        
+        <li>
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#equity"></use>
+          </svg>
+          <div class="name">equity</div>
+        </li>
+        
+        <li>
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#gift"></use>
+          </svg>
+          <div class="name">gift</div>
+        </li>
+        
+        <li>
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#ticket"></use>
+          </svg>
+          <div class="name">ticket</div>
+        </li>
+        
+        <li>
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#wallet-o"></use>
+          </svg>
+          <div class="name">wallet-o</div>
+        </li>
+        
       </ul>
 
       <h2 id="symbol-">symbol引用</h2>
@@ -49,7 +84,7 @@
       </ul>
       <p>使用步骤如下：</p>
       <h3 id="-symbol-">第一步：引入项目下面生成的symbol代码：</h3>
-      <pre><code class="lang-js hljs javascript"><span class="hljs-comment">&lt;script src="icons/<%= fontName %>.js"&gt;&lt;/script&gt;</span></code></pre>
+      <pre><code class="lang-js hljs javascript"><span class="hljs-comment">&lt;script src="icons/iconfont.js"&gt;&lt;/script&gt;</span></code></pre>
       <h3 id="-css-">第二步：加入通用css代码（引入一次就行）：</h3>
       <pre><code class="lang-js hljs javascript">&lt;style type=<span class="hljs-string">"text/css"</span>&gt;
 .icon {
