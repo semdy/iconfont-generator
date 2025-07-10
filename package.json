@@ -1,6 +1,6 @@
 {
   "name": "iconfont-generator-v2",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "bin": {
     "iconfont-generator": "./cli.js"
   },
@@ -23,6 +23,14 @@
   ],
   "author": "semdy <501859275@qq.com>",
   "license": "MIT",
+  "files": [
+    "./templates/*",
+    "./cli.js",
+    "./gulpfile.js",
+    "./options.js",
+    "./package.json",
+    "./README.md"
+  ],
   "dependencies": {
     "browser-sync": "^2.29.1",
     "c12": "^3.0.4",
