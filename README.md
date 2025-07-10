@@ -12,7 +12,7 @@ add, edit or remove a svg from `assets/icons` directory, the building will auto 
 ## how to use
 
 ```bash
-$ npm i iconfont-generator -g
+$ npm i iconfont-generator-v2 -g
 $ iconfont-generator --watch --sourceDir=assets/icons --distDir=assets/icon-fonts
 ```
 

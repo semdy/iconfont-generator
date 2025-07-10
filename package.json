@@ -1,5 +1,5 @@
 {
-  "name": "iconfont-generator",
+  "name": "iconfont-generator-v2",
   "version": "1.2.0",
   "bin": {
     "iconfont-generator": "./cli.js"
@@ -14,7 +14,6 @@
     "start": "gulp start",
     "build": "gulp build"
   },
-  "private": true,
   "keywords": [
     "svg symbol",
     "icon font",
