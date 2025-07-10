@@ -15,9 +15,10 @@ const through = require("through2");
 const bs = require("browser-sync").create();
 const _ = require("lodash");
 const { options } = require("./options");
+const { name: packageName } = require("./package.json");
 
 function relativeCWDPath(subPath) {
-  return path.resolve(fs.realpathSync(process.cwd()), subPath);
+  return path.resolve(process.cwd(), subPath);
 }
 
 function appendSlashIfNeeded(path) {
@@ -33,8 +34,12 @@ function pathWithDistDir(path) {
   return appendSlashIfNeeded(options.distDir) + path;
 }
 
+function pathWithTemplatesDir(path) {
+  return appendSlashIfNeeded(`node_modules/${packageName}/templates`) + path;
+}
+
 const svgs = pathWithSourceDir("**/*.svg");
-const templates = "templates/**/*.{js,css,html}";
+const templates = pathWithTemplatesDir("**/*.{js,css,html}");
 const template = "fontawesome-style";
 const timestamp = Math.round(Date.now() / 1000);
 
@@ -63,8 +68,8 @@ function pipeFontBase64Data(opts) {
 
     if (file.isBuffer()) {
       const base64 = file.contents.toString("base64");
-      const fontfaceBuffer = fs.readFileSync(`templates/${template}-fontface64.css`);
-      const cssBuffer = fs.readFileSync(`templates/${template}.css`);
+      const fontfaceBuffer = fs.readFileSync(pathWithTemplatesDir(`${template}-fontface64.css`));
+      const cssBuffer = fs.readFileSync(pathWithTemplatesDir(`${template}.css`));
       const contents = Buffer.concat([fontfaceBuffer, cssBuffer], fontfaceBuffer.length + cssBuffer.length);
       const compiled = _.template(contents.toString())(Object.assign({ base64 }, opts));
       file.contents = Buffer.from(compiled);
@@ -85,7 +90,7 @@ function pipeSvgSpriteData() {
 
     if (file.isBuffer()) {
       const svgSprite = file.contents.toString().replace(/<defs>[\s\S]+<\/defs>/, "");
-      const tmpJs = fs.readFileSync(`templates/${template}.js`).toString();
+      const tmpJs = fs.readFileSync(pathWithTemplatesDir(`${template}.js`)).toString();
       file.contents = Buffer.from(tmpJs.replace("${svgSprite}", svgSprite));
       file.path = replaceExt(file.path, ".js");
       return callback(null, file);
@@ -136,21 +141,21 @@ function build() {
         };
 
         gulp
-          .src([`templates/${template}-fontface.css`, `templates/${template}.css`])
+          .src([pathWithTemplatesDir(`${template}-fontface.css`), pathWithTemplatesDir(`${template}.css`)])
           .pipe(consolidate("lodash", opts))
           .pipe(concat(`${options.fontName}.css`))
           .pipe(gulp.dest(pathWithDistDir("styles/")));
 
-        gulp.src("templates/demo.css").pipe(gulp.dest(pathWithDistDir("styles")));
+        gulp.src(pathWithTemplatesDir("demo.css")).pipe(gulp.dest(pathWithDistDir("styles")));
 
         gulp
-          .src(`templates/${template}.html`)
+          .src(pathWithTemplatesDir(`${template}.html`))
           .pipe(consolidate("lodash", opts))
           .pipe(rename({ basename: "preview_fontclass" }))
           .pipe(gulp.dest(pathWithDistDir("")));
 
         gulp
-          .src(`templates/${template}-symbol.html`)
+          .src(pathWithTemplatesDir(`${template}-symbol.html`))
           .pipe(consolidate("lodash", opts))
           .pipe(rename({ basename: "preview_symbol" }))
           .pipe(gulp.dest(pathWithDistDir("")));

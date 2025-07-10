@@ -1,6 +1,6 @@
 {
   "name": "iconfont-generator-v2",
-  "version": "1.2.2",
+  "version": "1.2.4",
   "bin": {
     "iconfont-generator": "./cli.js"
   },
@@ -47,5 +47,8 @@
     "lodash": "^4.17.21",
     "prettier": "^3.5.3",
     "through2": "^4.0.2"
+  },
+  "resolutions": {
+    "undici": "^6.21.3"
   }
 }

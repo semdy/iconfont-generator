@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+const path = require("node:path");
 const { execSync } = require("child_process");
 const { version, bin } = require("./package.json");
 
@@ -45,12 +46,12 @@ const cli = async function (args) {
     process.env["ICON_FONT_" + key] = options[key];
   });
 
-  if (options.watch) {
-    console.log("iconfont-generator start watching...");
-    execSync("./node_modules/.bin/gulp --gulpfile ./gulpfile.js start");
-  } else {
-    execSync("./node_modules/.bin/gulp --gulpfile ./gulpfile.js build");
-  }
+  const gulpfilePath = path.join(__dirname, "gulpfile.js");
+  const gulpBin = path.join(__dirname, "node_modules", ".bin", "gulp");
+  const cwdPath = process.cwd();
+  const cmd = `${gulpBin} --cwd ${cwdPath} --gulpfile ${gulpfilePath} ${options.watch ? "start" : "build"}`;
+
+  execSync(cmd, { cwd: cwdPath, stdio: "inherit" });
 };
 
 cli(process.argv.slice(2));
