@@ -1,11 +1,11 @@
 const defaultOptions = {
-  watch: false,
   sourceDir: "assets/icons/",
   distDir: "assets/icon-fonts/",
   fontName: "iconfont",
   className: "iconfont",
   classPrefix: "icon-",
   port: 8750,
+  watch: false,
   debug: false
 };
 
@@ -16,7 +16,8 @@ const {
   ICON_FONT_className: className,
   ICON_FONT_classPrefix: classPrefix,
   ICON_FONT_port: port,
-  ICON_FONT_debug: debug
+  ICON_FONT_debug: debug,
+  ICON_FONT_watch: watch
 } = process.env;
 
 const overrideOptions = {
@@ -26,7 +27,8 @@ const overrideOptions = {
   className,
   classPrefix,
   port,
-  debug: debug ? JSON.parse(debug) : false
+  debug: debug ? JSON.parse(debug) : false,
+  watch: watch ? JSON.parse(watch) : false
 };
 
 const options = { ...defaultOptions };
