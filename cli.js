@@ -47,9 +47,9 @@ const cli = async function (args) {
 
   if (options.watch) {
     console.log("iconfont-generator start watching...");
-    execSync("./node_modules/.bin/gulp start");
+    execSync("./node_modules/.bin/gulp --gulpfile ./gulpfile.js start");
   } else {
-    execSync("./node_modules/.bin/gulp build");
+    execSync("./node_modules/.bin/gulp --gulpfile ./gulpfile.js build");
   }
 };
 
