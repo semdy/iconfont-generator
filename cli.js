@@ -46,12 +46,11 @@ const cli = async function (args) {
     process.env["ICON_FONT_" + key] = options[key];
   });
 
-  const gulpfilePath = path.join(__dirname, "gulpfile.js");
+  const gulpFilePath = path.join(__dirname, "gulpfile.js");
   const gulpBin = path.join(__dirname, "node_modules", ".bin", "gulp");
-  const cwdPath = process.cwd();
-  const cmd = `${gulpBin} --cwd ${cwdPath} --gulpfile ${gulpfilePath} ${options.watch ? "start" : "build"}`;
+  const cmd = `${gulpBin} --cwd ${process.cwd()} --gulpfile ${gulpFilePath} ${options.watch ? "start" : "build"}`;
 
-  execSync(cmd, { cwd: cwdPath, stdio: "inherit" });
+  execSync(cmd, { stdio: "inherit" });
 };
 
 cli(process.argv.slice(2));

@@ -17,6 +17,8 @@ const _ = require("lodash");
 const { options } = require("./options");
 const { name: packageName } = require("./package.json");
 
+const isInNodeModules = __dirname.includes("node_modules");
+
 function relativeCWDPath(subPath) {
   return path.resolve(process.cwd(), subPath);
 }
@@ -35,7 +37,7 @@ function pathWithDistDir(path) {
 }
 
 function pathWithTemplatesDir(path) {
-  return appendSlashIfNeeded(`node_modules/${packageName}/templates`) + path;
+  return appendSlashIfNeeded(isInNodeModules ? `node_modules/${packageName}/templates` : "templates") + path;
 }
 
 const svgs = pathWithSourceDir("**/*.svg");
@@ -161,7 +163,7 @@ function build() {
           .pipe(gulp.dest(pathWithDistDir("")));
 
         this.on("end", () => {
-          setTimeout(buildBase64font.bind(this, opts), 100);
+          setTimeout(buildBase64font.bind(this, opts), 200);
         });
       })
       .pipe(gulp.dest(pathWithDistDir("fonts/")));
